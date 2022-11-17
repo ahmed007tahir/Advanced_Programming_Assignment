@@ -17,6 +17,10 @@ private:
     std::vector<Point> points;
 public:
 
+    // shape constructor
+    Shape();
+    // isCircular Setter
+    void setCircular();
     virtual void calculatePoints();
     virtual void calculateArea();
     virtual void claculatePerimeter();

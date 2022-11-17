@@ -16,6 +16,9 @@ private:
     int radius;
 
 public:
+
+    // Circle Constructor
+    Circle();
     void calcuteArea();
     void calculatePerimeter();
     void calculatePoint();

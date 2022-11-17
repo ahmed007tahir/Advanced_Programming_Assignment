@@ -3,3 +3,12 @@
 //
 
 #include "Shape.h"
+
+Shape::Shape() {
+    isCircular = false;
+
+}
+
+void Shape::setCircular() {
+    isCircular = true;
+}

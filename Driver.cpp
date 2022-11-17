@@ -25,6 +25,8 @@ GOOD LUCK!
 #include <iostream>
 #include <string>
 
+void strcpy_s(char *cstr, unsigned long long int i, const char *str);
+
 using namespace std;
 
 int main()
@@ -57,8 +59,8 @@ int main()
 		if (command.compare("addR") == 0) {
 			// get parameters in the correct order
 			// The following four lines have a type mismatch error
-			// note that the the parameters vector contains ascii values
-			// HINT: stoi function converts from string to int
+			// note that the parameters vector contains ascii values
+			// HINT: toString() function converts from string to int
 
 			x = parameters[1].c_str(); // fix me! also note that x is not previously defined :(
 			// int y = ...
@@ -124,4 +126,9 @@ int main()
 	std::getchar();
 
 	return 0;
+}
+
+// this function will turn: addR 100 100 50 200  into Parameter = {“addR”, “100”, “100” , “50” , “200”}
+void strcpy_s(char *pointerToChar, int i, const char * someString) {
+
 }

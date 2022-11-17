@@ -3,3 +3,7 @@
 //
 
 #include "Circle.h"
+
+Circle::Circle() {
+    setCircular();
+}

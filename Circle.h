@@ -12,6 +12,16 @@
 
 class Circle : public Shape, public Movable {
 
+private:
+    int radius;
+
+public:
+    void calcuteArea();
+    void calculatePerimeter();
+    void calculatePoint();
+    void move();
+    void scale();
+    void toString();
 };
 
 

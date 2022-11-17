@@ -8,6 +8,9 @@
 
 class Movable {
 
+public:
+    void move(int newX, int newY);
+    void scale(float scaleX, float scaleY);
 };
 
 

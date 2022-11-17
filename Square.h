@@ -10,7 +10,16 @@
 #include "Movable.h"
 
 class Square : public Shape, public Movable {
+private:
+    int edge;
 
+public:
+    void calcuteArea();
+    void calculatePerimeter();
+    void calculatePoint();
+    void move();
+    void scale();
+    void toString();
 };
 
 

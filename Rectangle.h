@@ -10,7 +10,17 @@
 #include "Movable.h"
 
 class Rectangle : public Shape, public Movable {
+private:
+    int height;
+    int width;
 
+public:
+    void calcuteArea();
+    void calculatePerimeter();
+    void calculatePoint();
+    void move();
+    void scale();
+    void toString();
 };
 
 

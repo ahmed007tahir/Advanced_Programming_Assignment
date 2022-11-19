@@ -24,10 +24,11 @@ GOOD LUCK!
 
 #include <iostream>
 #include <string>
-
-void strcpy_s(char *cstr, unsigned long long int i, const char *str);
-
 using namespace std;
+
+
+void strcpy_s(char *cstr, int length, const char *str);
+
 
 int main()
 {
@@ -44,7 +45,8 @@ int main()
 
 		char * cstr = new char[userCommand.length() + 1];
 
-		strcpy_s(cstr, userCommand.length()+1, userCommand.c_str());
+        // this function copies the string 'userCommand' into the newly created memory 'cstr'
+        strcpy_s(cstr, userCommand.length()+1, userCommand.c_str());
 		
 		// implement a string tokenizer to populate the parameters vector 
 		// check function strtok_s
@@ -128,7 +130,11 @@ int main()
 	return 0;
 }
 
-// this function will turn: addR 100 100 50 200  into Parameter = {“addR”, “100”, “100” , “50” , “200”}
-void strcpy_s(char *pointerToChar, int i, const char * someString) {
-
+void strcpy_s(char *cstr, int length, const char *str) {
+    for (int i = 0; i < length ; i++ ){
+        *cstr++ = str[i];
+    }
 }
+
+// this function will turn: addR 100 100 50 200  into Parameter = {“addR”, “100”, “100” , “50” , “200”}
+

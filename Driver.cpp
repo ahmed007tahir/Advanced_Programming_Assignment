@@ -26,9 +26,9 @@ GOOD LUCK!
 #include <string>
 using namespace std;
 
-
 void strcpy_s(char *cstr, int length, const char *str);
-void strtok_s(vector<string>* parameters, char* userCommand)
+void strtok_s(vector<string>& parameters, char* cstr);
+
 
 
 int main()
@@ -51,7 +51,7 @@ int main()
 		
 		// implement a string tokenizer to populate the parameters vector 
 		// check function strtok_s
-        strtok_s(&parameters, cstr);
+        strtok_s(parameters, cstr);
 
 		// as a result of the process, parameters[0] should hold your command, followed by your parameters 
 		string command = parameters[0];
@@ -133,6 +133,7 @@ int main()
 }
 
 
+
 // this function copies the string 'userCommand' into the newly created memory 'cstr'
 void strcpy_s(char *cstr, int length, const char *str) {
     for (int i = 0; i < length ; i++ ){
@@ -142,21 +143,19 @@ void strcpy_s(char *cstr, int length, const char *str) {
 }
 
 // this function will turn: addR 100 100 50 200  into Parameter = {“addR”, “100”, “100” , “50” , “200”}
-void strtok_s(vector<string>* parameters, char* userCommand)
+void strtok_s(vector<string>& parameters, char* cptr)
 {
     string temp;
-    for(char* it = str; *it; ++it) {
-        if (*str != ' ')
+    for(cptr; *cptr; ++cptr) {
+        if (*cptr != ' ')
         {
-            temp += *str;
+            temp += *cptr;
         }
         else
         {
-            vec->push_back(temp);
+            parameters.push_back(temp);
             temp = "";
         }
     }
-
-    vec->push_back(temp);
-
+    parameters.push_back(temp);
 }

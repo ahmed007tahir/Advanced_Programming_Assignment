@@ -44,8 +44,7 @@ int main()
 
     int x = 0;                  // x-axis coordinate of the top left most part of the shape
     int y = 0;                  // y-axis coordinate of the top left most part of the shape
-    int w = 0;                  // width of the shape
-    int h = 0;                  // height of the shape
+
 
 
 	while (userCommand.compare("exit") != 0) 
@@ -75,20 +74,28 @@ int main()
 			// note that the parameters vector contains ascii values
 			// HINT: toString() function converts from string to int
 
+            int w = 0;                  // width of the shape
+            int h = 0;                  // height of the shape
+
 			x = atoi(parameters[1].c_str()); // fix me! also note that x is not previously defined :(
 			y = atoi(parameters[2].c_str());
 			h = atoi(parameters[3].c_str());
 			w = atoi(parameters[4].c_str());
 
-
 			Rectangle* r = new Rectangle(x, y, h, w);
 			shapes.push_back(r);
 			cout << r->toString();       /* instead of this, you may implement operator overloading and
-							use cout << r which will give you additional points */
+							                use cout << r which will give you additional points */
 		}
 		else if (command.compare("addS") == 0) {
-			// get parameters
-        // ...
+
+            // get parameters
+            // ...
+            x = atoi(parameters[1].c_str()); // fix me! also note that x is not previously defined :(
+            y = atoi(parameters[2].c_str());
+            int e = atoi(parameters[3].c_str());
+
+
 			Square* s = new Square(x, y, e);
 			shapes.push_back(s);
 			cout << s->toString();

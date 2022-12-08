@@ -13,7 +13,9 @@ private:
     int y;
 
 public:
-    Point();
+    // constructor
+    Point();                //Default Constructor: sets the x and y coordinate value to 0 by default
+    Point(int x, int y);
 };
 
 

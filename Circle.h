@@ -18,7 +18,9 @@ private:
 public:
 
     // Circle Constructor
-    Circle();
+    Circle(int xCoordinate, int yCoordinate, int radius) : Shape() {xCoordinate, yCoordinate, radius, false;};
+
+
     void calcuteArea();
     void calculatePerimeter();
     void calculatePoint();

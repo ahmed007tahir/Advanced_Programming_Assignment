@@ -14,6 +14,10 @@ private:
     int edge;
 
 public:
+
+    // Square Constructor
+    Square(int xCoordinate, int yCoordinate, int edge) : Shape() {xCoordinate, yCoordinate, edge, false;};
+
     void calcuteArea();
     void calculatePerimeter();
     void calculatePoint();

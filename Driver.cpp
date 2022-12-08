@@ -16,40 +16,49 @@ GOOD LUCK!
 
 ------------------------------------------------------ */
 
+#include <iostream>
+#include <string>
+
 #include "Shape.h"
 #include "Circle.h"
 #include "Rectangle.h"
 #include "Square.h"
 #include "Movable.h"
 
-#include <iostream>
-#include <string>
+
 using namespace std;
 
-void strcpy_s(char *cstr, int length, const char *str);
-void strtok_s(vector<string>& parameters, char* cstr);
+// this function copies the string 'userCommand' into the newly created memory 'cstr'
+void strcpy_s(char *destination, int size, const char *source);
+
+// this function will turn: addR 100 100 50 200  into Parameter = {“addR”, “100”, “100” , “50” , “200”}
+void strtok_s(vector<string>& outputVector, char* str);
 
 
 
 int main()
 {
-	string userCommand;
+	string userCommand;         // this holds the user input
 	vector <Shape*> shapes;     // this one will hold your shapes
 	vector <string> parameters; // this one will hold parameters for the commands
+
+    int x = 0;                  // x-axis coordinate of the top left most part of the shape
+    int y = 0;                  // y-axis coordinate of the top left most part of the shape
+    int w = 0;                  // width of the shape
+    int h = 0;                  // height of the shape
 
 
 	while (userCommand.compare("exit") != 0) 
 	{
 		cout << "Enter the command: ";
-		
 		getline(cin, userCommand);
 
 		char * cstr = new char[userCommand.length() + 1];
 
-        // this function copies the string 'userCommand' into the newly created memory 'cstr'
+        // this function copies the string 'userCommand' into 'cstr'
         strcpy_s(cstr, userCommand.length()+1, userCommand.c_str());
-		
-		// implement a string tokenizer to populate the parameters vector 
+
+		// implement a string tokenizer to populate the parameters vector
 		// check function strtok_s
         strtok_s(parameters, cstr);
 
@@ -66,24 +75,25 @@ int main()
 			// note that the parameters vector contains ascii values
 			// HINT: toString() function converts from string to int
 
-			x = parameters[1].c_str(); // fix me! also note that x is not previously defined :(
-			// int y = ...
-			// int h = ...
-			// int w = ...
+			x = atoi(parameters[1].c_str()); // fix me! also note that x is not previously defined :(
+			y = atoi(parameters[2].c_str());
+			h = atoi(parameters[3].c_str());
+			w = atoi(parameters[4].c_str());
 
 
 			Rectangle* r = new Rectangle(x, y, h, w);
 			shapes.push_back(r);
-			cout << r->toString(); /* instead of this, you may implement operator overloadig and 
-									use cout << r which will give you additional points */
+			cout << r->toString();       /* instead of this, you may implement operator overloading and
+							use cout << r which will give you additional points */
 		}
 		else if (command.compare("addS") == 0) {
 			// get parameters
-			// ...
+        // ...
 			Square* s = new Square(x, y, e);
 			shapes.push_back(s);
 			cout << s->toString();
 		}
+
 
 		if (command.compare("addC") == 0) {
 			// get parameters
@@ -100,7 +110,6 @@ int main()
 			// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
 			// As a result all your derived classes have scale functions... 
 			// You may need to use type casting wisely to use polymorphic functionality!
-			
 		}
 		else if (command.compare("move") == 0) {
 			// move object at index 
@@ -121,6 +130,7 @@ int main()
 			// this is not given in our example, but why don't you implement a display function which shows all objects stored in shapes?
 		}
 
+
 		// do any necessary postprocessing at the end of each loop...
 		// yes, there is some necessary postprocessing...
 		cout << endl << endl;
@@ -133,29 +143,28 @@ int main()
 }
 
 
-
 // this function copies the string 'userCommand' into the newly created memory 'cstr'
-void strcpy_s(char *cstr, int length, const char *str) {
-    for (int i = 0; i < length ; i++ ){
-        *cstr++ = str[i];
+void strcpy_s(char *destination, int size, const char *source) {
+    for (int i = 0; i < size ; i++ ){
+        *destination++ = source[i];
     }
-    *cstr+= '\0';
+    *destination+= '\0';
 }
 
 // this function will turn: addR 100 100 50 200  into Parameter = {“addR”, “100”, “100” , “50” , “200”}
-void strtok_s(vector<string>& parameters, char* cptr)
+void strtok_s(vector<string>& outputVector, char* str)
 {
     string temp;
-    for(cptr; *cptr; ++cptr) {
-        if (*cptr != ' ')
+    for(str; *str; ++str) {
+        if (*str != ' ')
         {
-            temp += *cptr;
+            temp += *str;
         }
         else
         {
-            parameters.push_back(temp);
+            outputVector.push_back(temp);
             temp = "";
         }
     }
-    parameters.push_back(temp);
+    outputVector.push_back(temp);
 }

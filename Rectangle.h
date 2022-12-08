@@ -15,12 +15,18 @@ private:
     int width;
 
 public:
+
+    Rectangle(int xCoordinate, int yCoordinate, int height, int width) : Shape() {xCoordinate, yCoordinate, height, width;};
+
+
     void calcuteArea();
     void calculatePerimeter();
     void calculatePoint();
     void move();
     void scale();
     void toString();
+
+    // constructor
 };
 
 

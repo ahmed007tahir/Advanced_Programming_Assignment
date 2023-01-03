@@ -5,50 +5,18 @@
 #include "Shape.h"
 
 Shape::Shape() {
-    isCircular = false;
-
-}
-
-void Shape::setCircular() {
-    isCircular = true;
+    perimeter = 0;
+    area = 0;
 }
 
 Shape::Shape(int xCoordinate, int yCoordinate, int height, int width)
 {
     leftTop = Point(xCoordinate, yCoordinate);
-    Point rightTop = Point(xCoordinate + width, yCoordinate);
-    Point rightBottom = Point(xCoordinate + width, yCoordinate + height);
-    Point leftBottom = Point(xCoordinate, yCoordinate + height);
-
-    points.push_back(leftTop);
-    points.push_back(rightTop);
-    points.push_back(rightBottom);
-    points.push_back(leftBottom);
-
-
 }
 
-Shape::Shape(int xCoordinate, int yCoordinate, int length, bool flag) {
-    isCircular = flag;
+Shape::Shape(int xCoordinate, int yCoordinate, int length)
+{
     leftTop = Point(xCoordinate, yCoordinate);
-    points.push_back(leftTop);
-
-    if (isCircular)
-    {
-        Point rightBottom = Point(xCoordinate + (2 * length), yCoordinate + (2 * length));
-        points.push_back(rightBottom);
-    }
-    else
-    {
-        Point rightTop = Point(xCoordinate + length, yCoordinate);
-        Point rightBottom = Point(xCoordinate + length, yCoordinate + length);
-        Point leftBottom = Point(xCoordinate, yCoordinate + length);
-
-        points.push_back(rightTop);
-        points.push_back(rightBottom);
-        points.push_back(leftBottom);
-    }
-
 }
 
 std::string Shape::toString() {

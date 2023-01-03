@@ -10,18 +10,24 @@
 #include "Movable.h"
 
 class Rectangle : public Shape, public Movable {
+
 private:
+
     int height;
     int width;
 
 public:
 
-    Rectangle(int xCoordinate, int yCoordinate, int height, int width) : Shape() {xCoordinate, yCoordinate, height, width;};
+    // ----------- Constructors -------------//
+    Rectangle();    // Rectangle  default constructor
+    Rectangle(int xCoordinate, int yCoordinate, int height, int width);
+    //---------------------------------------//
 
 
-    void calcuteArea();
-    void calculatePerimeter();
-    void calculatePoint();
+    double calculateArea() override;
+    double calculatePerimeter() override;
+    void calculatePoints() override;
+
     void move();
     void scale();
     void toString();

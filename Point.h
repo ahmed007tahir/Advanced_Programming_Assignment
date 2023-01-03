@@ -13,9 +13,14 @@ private:
     int y;
 
 public:
-    // constructor
+    // ----------- Constructors -------------//
     Point();                //Default Constructor: sets the x and y coordinate value to 0 by default
     Point(int x, int y);
+    //---------------------------------------//
+
+    int getXCoordinate() const {return x;};
+    int getYCoordinate() const {return y;};
+
 };
 
 

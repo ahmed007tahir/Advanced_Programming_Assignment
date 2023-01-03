@@ -5,7 +5,7 @@
 #ifndef PROJECT_FOLDER_CIRCLE_H
 #define PROJECT_FOLDER_CIRCLE_H
 
-
+#include <cmath>
 #include "Shape.h"
 #include "Movable.h"
 
@@ -13,17 +13,22 @@
 class Circle : public Shape, public Movable {
 
 private:
+
     int radius;
 
 public:
 
-    // Circle Constructor
-    Circle(int xCoordinate, int yCoordinate, int radius) : Shape() {xCoordinate, yCoordinate, radius, false;};
+    // ----------- Constructors -------------//
+    Circle();   // Circle default constructor
+    Circle(int xCoordinate, int yCoordinate, int radius);
+    //---------------------------------------//
 
 
-    void calcuteArea();
-    void calculatePerimeter();
-    void calculatePoint();
+    double calculateArea() override;
+    double calculatePerimeter() override;
+    void calculatePoints() override;
+
+
     void move();
     void scale();
     void toString();

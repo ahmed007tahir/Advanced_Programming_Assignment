@@ -5,24 +5,30 @@
 #ifndef PROJECT_FOLDER_SQUARE_H
 #define PROJECT_FOLDER_SQUARE_H
 
-
+#include <cmath>
 #include "Shape.h"
 #include "Movable.h"
 
 class Square : public Shape, public Movable {
+
 private:
+
     int edge;
 
 public:
 
-    // Square Constructor
-    Square(int xCoordinate, int yCoordinate, int edge) : Shape() {xCoordinate, yCoordinate, edge, false;};
+    // ----------- Constructors -------------//
+    Square();   // Square default constructor
+    Square(int xCoordinate, int yCoordinate, int edge);
+    //---------------------------------------//
 
-    void calcuteArea();
-    void calculatePerimeter();
-    void calculatePoint();
-    void move();
-    void scale();
+    double calculateArea() override;
+    double calculatePerimeter() override;
+    void calculatePoints() override;
+
+    void move(int newX, int newY) override;
+    void scale(float scaleX, float scaleY) override;
+
     void toString();
 };
 

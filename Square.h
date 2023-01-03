@@ -12,8 +12,7 @@
 class Square : public Shape, public Movable {
 
 private:
-
-    int edge;
+    double edge;
 
 public:
 
@@ -29,7 +28,7 @@ public:
     void move(int newX, int newY) override;
     void scale(float scaleX, float scaleY) override;
 
-    void toString();
+    std::string toString() override;
 };
 
 

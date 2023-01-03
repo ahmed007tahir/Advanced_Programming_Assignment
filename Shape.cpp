@@ -4,17 +4,18 @@
 
 #include "Shape.h"
 
-Shape::Shape() {
+Shape::Shape() : leftTop(0,0)
+{
     perimeter = 0;
     area = 0;
 }
 
-Shape::Shape(int xCoordinate, int yCoordinate, int height, int width)
+Shape::Shape(int xCoordinate, int yCoordinate, float height, float width)
 {
     leftTop = Point(xCoordinate, yCoordinate);
 }
 
-Shape::Shape(int xCoordinate, int yCoordinate, int length)
+Shape::Shape(int xCoordinate, int yCoordinate, float length)
 {
     leftTop = Point(xCoordinate, yCoordinate);
 }

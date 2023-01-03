@@ -23,8 +23,8 @@ public:
 
     // ----------- Constructors -------------//
     Shape();                                                            // Shape default constructor
-    Shape(int xCoordinate, int yCoordinate, int length);                // Shape constructor for square and circular shapes
-    Shape(int xCoordinate, int yCoordinate, int height, int width);     // Shape constructor for rectangular shapes
+    Shape(int xCoordinate, int yCoordinate, float length);                // Shape constructor for square and circular shapes
+    Shape(int xCoordinate, int yCoordinate, float height, float width);     // Shape constructor for rectangular shapes
     // -------------- Setters ---------------//
     void setIsCircular() {isCircular = true;};
     void setArea(double newArea) {this->area = newArea;};
@@ -40,8 +40,7 @@ public:
     virtual void calculatePoints() = 0;
     virtual double calculateArea() = 0;
     virtual double calculatePerimeter() = 0;
-
-    std::string toString();
+    virtual std::string toString() = 0;
 
 };
 

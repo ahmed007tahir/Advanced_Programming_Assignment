@@ -13,8 +13,8 @@ class Rectangle : public Shape, public Movable {
 
 private:
 
-    int height;
-    int width;
+    double height;
+    double width;
 
 public:
 
@@ -23,16 +23,14 @@ public:
     Rectangle(int xCoordinate, int yCoordinate, int height, int width);
     //---------------------------------------//
 
-
     double calculateArea() override;
     double calculatePerimeter() override;
     void calculatePoints() override;
 
-    void move();
-    void scale();
-    void toString();
+    void move(int newX, int newY) override;
+    void scale(float scaleX, float scaleY) override;
 
-    // constructor
+    std::string toString() override;
 };
 
 

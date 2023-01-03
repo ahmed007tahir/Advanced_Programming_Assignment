@@ -14,13 +14,13 @@ class Circle : public Shape, public Movable {
 
 private:
 
-    int radius;
+    double radius;
 
 public:
 
     // ----------- Constructors -------------//
     Circle();   // Circle default constructor
-    Circle(int xCoordinate, int yCoordinate, int radius);
+    Circle(int xCoordinate, int yCoordinate, float radius);
     //---------------------------------------//
 
 
@@ -28,11 +28,12 @@ public:
     double calculatePerimeter() override;
     void calculatePoints() override;
 
+    std::string toString() override;
+    void move(int newX, int newY) override;
+    void scale(float scaleX, float scaleY) override;
 
-    void move();
-    void scale();
-    void toString();
-};
+
+    };
 
 
 #endif //PROJECT_FOLDER_CIRCLE_H

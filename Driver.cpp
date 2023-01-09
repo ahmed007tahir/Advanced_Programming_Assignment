@@ -18,7 +18,7 @@ GOOD LUCK!
 
 #include <iostream>
 #include <string>
-
+#include <vector>
 #include "Shape.h"
 #include "Circle.h"
 #include "Rectangle.h"
@@ -45,9 +45,7 @@ int main()
     int x = 0;                  // x-axis coordinate of the top left most part of the shape
     int y = 0;                  // y-axis coordinate of the top left most part of the shape
 
-
-
-	while (userCommand.compare("exit") != 0) 
+	while (userCommand.compare("exit") != 0)
 	{
 		cout << "Enter the command: ";
 		getline(cin, userCommand);
@@ -61,7 +59,7 @@ int main()
 		// check function strtok_s
         strtok_s(parameters, cstr);
 
-		// as a result of the process, parameters[0] should hold your command, followed by your parameters 
+		// as a result of the process, parameters[0] should hold your command, followed by your parameters
 		string command = parameters[0];
 
 
@@ -95,38 +93,56 @@ int main()
             y = atoi(parameters[2].c_str());
             int e = atoi(parameters[3].c_str());
 
-
 			Square* s = new Square(x, y, e);
 			shapes.push_back(s);
 			cout << s->toString();
 		}
 
-
 		if (command.compare("addC") == 0) {
 			// get parameters
 			// ...
+            x = atoi(parameters[1].c_str()); // fix me! also note that x is not previously defined :(
+            y = atoi(parameters[2].c_str());
+            int r = atoi(parameters[3].c_str());
+
 			Circle* c = new Circle(x, y, r);
 			shapes.push_back(c);
 			cout << c->toString();
-			
+
 		}
 		else if (command.compare("scale") == 0) {
-			// scale object at index... the scaling needs to be isotropic in case of circle and square 
+			// scale object at index... the scaling needs to be isotropic in case of circle and square
 			// you may want to check if the index exists or not!
-			
-			// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
-			// As a result all your derived classes have scale functions... 
-			// You may need to use type casting wisely to use polymorphic functionality!
-		}
+
+            int shapeNo = atoi(parameters[1].c_str());
+            float scaleX = atoi(parameters[2].c_str());
+            float scaleY = atoi(parameters[3].c_str());
+
+            Movable *m = dynamic_cast<Movable*>(shapes[shapeNo - 1]);
+            m->scale(scaleX, scaleY);
+
+            cout << shapes[shapeNo - 1]->toString();
+        }
+//        else if (command.compare("move") == 0) {
+//            // move object at index
+//            int shapeNo = atoi(parameters[1].c_str());
+//			// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
+//			// As a result all your derived classes have scale functions...
+//			// You may need to use type casting wisely to use polymorphic functionality!
+//		}
 		else if (command.compare("move") == 0) {
-			// move object at index 
-			int shapeNo; // read from parameters
+			// move object at index
+			int shapeNo = atoi(parameters[1].c_str()); // read from parameters
+            // you may want to check if the index exists or not!
+            // read from parameters
 			// you may want to check if the index exists or not!
-			
+
 			// Study the following code. A Shape object is not Movable, but all derived classes are...
 			// you can't automatically type cast from a Shape to a Movable, but you can force a downcasting
 			Movable *m = dynamic_cast<Movable*>(shapes[shapeNo - 1]);
-			m->move(x, y);
+            x = atoi(parameters[2].c_str());
+            y = atoi(parameters[3].c_str());
+            m->move(x, y);
 			// scale should work similarly...
 
 			// note that here you should see the corresponding toString output for the derived classes...
@@ -135,13 +151,22 @@ int main()
 		}
 		else if (command.compare("display") == 0) {
 			// this is not given in our example, but why don't you implement a display function which shows all objects stored in shapes?
-		}
-
+            for (int i = 0; i < shapes.size(); i++) {
+                cout << shapes[i]->toString();
+            }
+        }else if (command.compare("exit") == 0)
+        {
+            break;
+        }
 
 		// do any necessary postprocessing at the end of each loop...
 		// yes, there is some necessary postprocessing...
-		cout << endl << endl;
-	}
+
+        parameters.clear();
+        cout << endl << endl;
+        delete[] cstr;
+        userCommand = "";
+    }
 
 	cout << "Press any key to continue...";
 	std::getchar();

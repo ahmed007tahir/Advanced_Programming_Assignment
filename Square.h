@@ -32,4 +32,5 @@ public:
 };
 
 
+
 #endif //PROJECT_FOLDER_SQUARE_H

@@ -16,7 +16,9 @@ private:
     double perimeter{};         // holds the value for the perimeter of the shape
     bool isCircular = false;    // this flag is set to true if the shape is a circle
     Point leftTop;              // holds the x and y coordinates of the top left most part of the shape
-    std::vector<Point> points;  // holds the coordinates of the corners of the shape in the order: 1. leftTop, rightTop, rightBottom and leftBottom for squares and rectangles, and 2. topLeft and bottomRight for circles
+    std::vector<Point> points;  // holds the coordinates of the corners of the shape in the order: [leftTop, rightTop, rightBottom and leftBottom] for squares and rectangles, and [topLeft and bottomRight] for circles
+
+    friend std::ostream& operator <<(std::ostream& os, Shape* shape);   // this allows to use of the '<<' operator to directly print out the shape description to the console.
 
 public:
     // ----------- Constructors -------------//
@@ -24,7 +26,7 @@ public:
     Shape(int xCoordinate, int yCoordinate, float length);              // Shape constructor for square and circular shapes
     Shape(int xCoordinate, int yCoordinate, float height, float width); // Shape constructor for rectangular shapes
     // -------------- Setters ---------------//
-    void setIsCircular() {isCircular = true;};      // Setter method for the private bool property 'isCircular'. This property is set to True when the shape is Circular and false otherwise.
+    void setIsCircular() {isCircular = true;};                                          // Setter method for the private bool property 'isCircular'. This property is set to True when the shape is Circular and false otherwise.
     void setLeftTopPoint(Point newTopLeftPoint) {this->leftTop = newTopLeftPoint;};     // This setter method is used to update the private 'letftop' property of the object.
     // -------------- Getters ---------------//
     Point getLeftTopPoint() {return leftTop;};

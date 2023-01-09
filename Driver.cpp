@@ -82,20 +82,18 @@ int main()
 
 			Rectangle* r = new Rectangle(x, y, h, w);
 			shapes.push_back(r);
-			cout << r->toString();       /* instead of this, you may implement operator overloading and
+			cout << r;       /* instead of this, you may implement operator overloading and
 							                use cout << r which will give you additional points */
 		}
 		else if (command.compare("addS") == 0) {
 
-            // get parameters
-            // ...
-            x = atoi(parameters[1].c_str()); // fix me! also note that x is not previously defined :(
+            x = atoi(parameters[1].c_str());
             y = atoi(parameters[2].c_str());
             int e = atoi(parameters[3].c_str());
 
 			Square* s = new Square(x, y, e);
 			shapes.push_back(s);
-			cout << s->toString();
+			cout << s;
 		}
 
 		if (command.compare("addC") == 0) {
@@ -107,7 +105,7 @@ int main()
 
 			Circle* c = new Circle(x, y, r);
 			shapes.push_back(c);
-			cout << c->toString();
+			cout << c;
 
 		}
 		else if (command.compare("scale") == 0) {
@@ -150,14 +148,11 @@ int main()
 			cout << shapes[shapeNo - 1]->toString();
 		}
 		else if (command.compare("display") == 0) {
-			// this is not given in our example, but why don't you implement a display function which shows all objects stored in shapes?
-            for (int i = 0; i < shapes.size(); i++) {
-                cout << shapes[i]->toString();
+            for (auto shape : shapes) {
+                cout << shape << "\n" << endl;
             }
-        }else if (command.compare("exit") == 0)
-        {
-            break;
         }
+        else if (command.compare("exit") == 0){break;}
 
 		// do any necessary postprocessing at the end of each loop...
 		// yes, there is some necessary postprocessing...
